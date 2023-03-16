@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Hotkeys</h1>
+  <ul style="list-style: none;">
+    <li><b>Ctrl + Shift + Left click</b>: Delete an element under the cursor and remove blocking css</li>
+    <li><b>Ctrl + Shift twice</b>: Toggle images (not saved)</li>
+    <li><b>Ctrl + Alt twice</b>: Weaken/strenghten iframes (not saved)</li>
+  </ul>
+  <h1>Settings</h1>
+  <div>
+    <label>
+      <input type="checkbox" id="hideImages"> Hide images
+    </label>
+  </div>
+  <div>
+    <label>
+      <select id="exceptionType">
+        <option value="whitelist">Whitelist</option>
+        <option value="blacklist">Blacklist</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>
+      Exception websites (one per line):
+      <textarea id="exceptionWebsites" rows="5" cols="30"></textarea>
+    </label>
+    <div style="display:none;" id="exceptionWebsitesError">List is in incorrect format. Make sure to include http:// or https:// at the beginning.</div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="weakenIframes"> Weaken iframes
+    </label>
+    <ul>
+      <li>Makes iframes breakable (used by videos, modals, etc.)</li>
+      <li>May break site behavior</li>
+    </ul>
+  </div>
+  <button id="save">Save settings</button>
+  <div style="display:none; margin-top: 10px; font-size: 16px;" id="settingsSavedInfo">Settings saved!</div>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "PageControl - Overtake the webpage",
+  "version": "1.0",
+  "description": "PageControl empowers the user to regain control of their browsing experience. With a simple click, effortlessly remove intrusive HTML elements such as cookie consent modals, unlock scroll-locked pages, and enable text selection on restricted websites. PageControl also offers the ability to disable images, reduce intrusiveness of iframes. Now you're in charge, so can enjoy your browsing again with PageControl. Easy and effortless to use thanks to hotkeys that were designed power users in mind.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "/options.html"
+  },  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["sw.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
