@@ -4,3 +4,4 @@ PageControl empowers the user to regain control of their browsing experience. Wi
 ### Icons
 [Fist icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/fist)
 
+https://chrome.google.com/webstore/detail/pagecontrol-overtake-the/icnenlcmciihaeidmioapncfohdhfhga?hl=en&authuser=2
