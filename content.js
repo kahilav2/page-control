@@ -123,7 +123,7 @@ function onKeyDown(e) {
     const crosshairEl = document.getElementById("crosshair-style");
     if (crosshairEl) return 
     const crosshairStyles = `
-      html, a, a:hover, div, div:hover {
+      html, a, a:hover, div, div:hover, article, article:hover {
         cursor: url('crosshair.png'), crosshair !important;
       }
     `;
