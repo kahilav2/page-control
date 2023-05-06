@@ -3,6 +3,14 @@ let timeSinceLastDoubleKeydown = null;
 let bothDown = false;
 const DOUBLE_KEYDOWN_TIME_LIMIT = 700; // milliseconds
 let settings = {}
+const keys = {
+  firstButton: "ctrlKey",
+  secondButton: "shiftKey",
+}
+// if os is mac, use metaKey instead of ctrlKey
+if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+    keys.firstButton = "metaKey";
+}
 
 const iframeStyleElement = document.createElement('style');
 iframeStyleElement.textContent = `
@@ -89,7 +97,7 @@ chrome.runtime.onMessage.addListener(
 
 
 function onMouseDown(e) {
-  if (e.ctrlKey && e.shiftKey && e.button === 0) {
+  if (e[keys.firstButton] && e[keys.secondButton] && e.button === 0) {
     e.preventDefault();
     e.target.remove();
     if (firstClick) {
@@ -102,7 +110,7 @@ function onMouseDown(e) {
 
 
 function onKeyDown(e) {
-  if (e.ctrlKey && e.shiftKey && !bothDown) {
+  if (e[keys.firstButton] && e[keys.secondButton] && !bothDown) {
     bothDown = true
     if (timeSinceLastDoubleKeydown && 
       (new Date).getTime() - timeSinceLastDoubleKeydown.getTime() < DOUBLE_KEYDOWN_TIME_LIMIT) {
@@ -113,13 +121,13 @@ function onKeyDown(e) {
     }
   }
   
-  if (e.ctrlKey && e.altKey) {
+  if (e[keys.firstButton] && e.altKey) {
     settings.weakenIframes = !settings.weakenIframes
 
     if (settings.weakenIframes) weakenIframes()
     else strenghtenIframes()
   }
-  if (e.ctrlKey && e.shiftKey) {
+  if (e[keys.firstButton] && e[keys.secondButton]) {
     const crosshairEl = document.getElementById("crosshair-style");
     if (crosshairEl) return 
     const crosshairStyles = `
@@ -137,10 +145,10 @@ function onKeyDown(e) {
 
 
 function onKeyUp(e) {
-  if (!e.ctrlKey || !e.shiftKey) {
+  if (!e[keys.firstButton] || !e[keys.secondButton]) {
     bothDown = false;
   }
-  if (!e.ctrlKey) {
+  if (!e[keys.firstButton]) {
     const crosshairStyleElement = document.getElementById("crosshair-style");
     if (crosshairStyleElement) {
       crosshairStyleElement.remove();
