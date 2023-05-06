@@ -156,6 +156,20 @@ function onKeyUp(e) {
   }
 }
 
+function resetKeyStates() {
+  bothDown = false;
+  const crosshairStyleElement = document.getElementById("crosshair-style");
+  if (crosshairStyleElement) {
+    crosshairStyleElement.remove();
+  }
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    resetKeyStates();
+  }
+});
+
 
 const hideBackgroundImageStyle = document.createElement('style');
 hideBackgroundImageStyle.textContent = `
