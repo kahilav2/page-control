@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PageControl - Overtake the webpage",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Regain browsing control, use hotkeys to shoot down intrusive HTML, disable images & enable text selection.",
   "permissions": [
     "activeTab",
