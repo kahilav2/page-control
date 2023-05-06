@@ -45,7 +45,6 @@ async function getSettings() {
   settings.weakenIframes = s.weakenIframes || false;
   settings.exceptionType = s.exceptionType || 'whitelist';
   settings.exceptionWebsites = s.exceptionWebsites || [];
-  console.log("ex list", settings.exceptionWebsites)
   if (settings.weakenIframes) weakenIframes();
   if (settings.hideImages && 
       ((settings.exceptionType === "whitelist" &&
@@ -58,10 +57,8 @@ async function getSettings() {
 
 function isCurrentURLInList(urlList) {
   const currentURL = new URL(window.location.href);
-  console.log("current url", normalizeHostname(currentURL.hostname))
   return urlList.some((url) => {
     const exceptionURL = new URL(url);
-    console.log("compared url", normalizeHostname(exceptionURL.hostname))
     return normalizeHostname(currentURL.hostname) === normalizeHostname(exceptionURL.hostname);
   });
 }
