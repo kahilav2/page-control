@@ -46,11 +46,16 @@ async function getSettings() {
   settings.exceptionType = s.exceptionType || 'whitelist';
   settings.exceptionWebsites = s.exceptionWebsites || [];
   if (settings.weakenIframes) weakenIframes();
-  if (settings.hideImages && 
-      ((settings.exceptionType === "whitelist" &&
+  if (settings.hideImages) {
+    if ((settings.exceptionType === "whitelist" &&
       !isCurrentURLInList(settings.exceptionWebsites)) ||
       (settings.exceptionType === "blacklist" &&
-      settings.hideImages && isCurrentURLInList(settings.exceptionWebsites)))) hideImages();
+      settings.hideImages && isCurrentURLInList(settings.exceptionWebsites))) {
+         hideImages();
+    } else {
+      settings.hideImages = false;
+    }
+  }
   
 })();
 
